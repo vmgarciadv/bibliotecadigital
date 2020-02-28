@@ -1,5 +1,5 @@
 <?php
-
+hahahahaha
 namespace QA\Http\Controllers\Auth;
 
 use QA\Http\Controllers\Controller;
