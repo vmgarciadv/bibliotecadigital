@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersTable extends Migration
+class CreateObsobjTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,12 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('usuario', function (Blueprint $table) {
+        Schema::create('obs_obj', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
+            $table->integer('observacion_id');
+            $table->integer('objetivo_id');
+            $table->foreign('observacion_id')->references('id')->on('observacion');
+            $table->foreign('objetivo_id')->references('id')->on('objetivo');
             $table->timestamps();
         });
     }
@@ -27,6 +30,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('obs_obj');
     }
 }
