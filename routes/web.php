@@ -11,6 +11,34 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+
+Route::get('/', 'TesisController@index');
+
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  //  $client = new Client([
+        // Base URI is used with relative requests
+   // 'base_uri' => 'https://jsonplaceholder.typicode.com',
+        // You can set any number of default request options.
+   // 'timeout'  => 2.0,
+    //]);
+
+//    $response = $client->request('GET', 'posts');
+
+  //  dd($response->getBody()->getContents());
+
+    //return view('welcome');
+//);
