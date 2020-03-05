@@ -18,7 +18,7 @@ class CreateObjetivosTable extends Migration
             $table->string('nombre');
             $table->integer('tesis_id');
             $table->integer('usuario_id');
-            $table->integer('objetivo_id');
+            $table->integer('objetivo_id')->nullable($value = true);
             $table->foreign('tesis_id')->references('id')->on('tesis');
             $table->foreign('usuario_id')->references('id')->on('usuario');
             $table->foreign('objetivo_id')->references('id')->on('objetivo');
