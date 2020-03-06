@@ -28,7 +28,9 @@ class ObservacionesController extends Controller
     
 ]);
 
-$response= $client->request('GET', 'horarios');
+    $response= $client->request('GET', 'horarios');
+    $post = json_decode($response->getBody()->getContents());
+    dd($post);
 
 
     }
@@ -51,7 +53,7 @@ $response= $client->request('GET', 'horarios');
      */
     public function store(Request $request)
     {
-            $client = new \GuzzleHttp\Client(["base_uri" => "http://dogcare-cliente.herokuapp.com"]);
+            $client = new \GuzzleHttp\Client(["base_uri" => "http://dogcare-cliente.herokuapp.com/horario"]);
             $options = [
                 'json' => [
                     "cuidador" => 5,
