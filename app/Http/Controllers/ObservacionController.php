@@ -15,6 +15,20 @@ class ObservacionController extends Controller
     public function index()
     {
         //
+        $client = new Client([
+            // Base URI is used with relative requests
+            'base_uri' => 'https://bibliotecadigital.herokuapp.com/api/observacion',
+            // You can set any number of default request options.
+            'timeout'  => 2.0,  
+        ]);
+
+        $response= $client->request('GET', 'api/observacion');
+
+        $post = json_decode($response->getBody()->getContents());
+
+         echo $response->getBody();
+
+         dd($post);
     }
 
     /**
@@ -25,6 +39,19 @@ class ObservacionController extends Controller
     public function create()
     {
         //
+        $client = new \GuzzleHttp\Client(["base_uri" => "https://bibliotecadigital.herokuapp.com/api/observacion"]);
+        $options = [
+            'json' => [
+                "descripcion" => "Observacion Prueba 7"
+               ]
+            
+        ];
+        
+
+        $response = $client->post("/api/observacion", $options);
+
+        echo $response->getBody();
+        dd($response); 
     }
 
     /**
