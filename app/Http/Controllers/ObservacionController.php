@@ -4,6 +4,8 @@ namespace QA\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Observacion;
+use QA\Http\Controllers\Controller;
+use GuzzleHttp\Client;
 use DB;
 
 class ObservacionController extends Controller
@@ -15,7 +17,22 @@ class ObservacionController extends Controller
      */
     public function index()
     {
-        //
+
+            $client = new Client([
+            // Base URI is used with relative requests
+            'base_uri' => 'https://bibliotecadigital.herokuapp.com/api/observacion',
+            // You can set any number of default request options.
+            'timeout'  => 2.0,  
+        ]);
+
+        $response= $client->request('GET', 'api/observacion');
+
+        $post = json_decode($response->getBody()->getContents());
+
+          echo $response->getBody();
+
+          dd($post);
+
     }
 
     /**
@@ -26,7 +43,20 @@ class ObservacionController extends Controller
     public function create()
     {
         //
-        return view('observacion.create');
+         $client = new \GuzzleHttp\Client(["base_uri" => "https://bibliotecadigital.herokuapp.com/api/observacion"]);
+        $options = [
+            'json' => [
+                "descripcion" => "Observacion Prueba 7"
+               ]
+            
+        ];
+        
+
+        $response = $client->post("/api/observacion", $options);
+
+        echo $response->getBody();
+        dd($response); 
+      
     }
 
     /**
@@ -38,10 +68,14 @@ class ObservacionController extends Controller
     public function store(Request $request)
     {
         //
-        $descripcion = $request->input('descripcion');
-        $observacion=array('descripcion'=>$descripcion);
-        DB::table('observacion')->insert($observacion);
-        return redirect('/observacion');
+        $request->validate([
+            'descripcion'=>'required',
+        ]);
+        $observacion = new Observacion([
+            'descripcion' => $request->get('descripcion')
+        ]);
+        $observacion->save();
+       
     }
 
     /**
