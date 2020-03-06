@@ -68,12 +68,8 @@ class ObservacionController extends Controller
     public function store(Request $request)
     {
         //
-        $request->validate([
-            'descripcion'=>'required',
-        ]);
-        $observacion = new Observacion([
-            'descripcion' => $request->get('descripcion')
-        ]);
+        $observacion = new Observacion;
+        $observacion->descripcion = $request->descripcion;
         $observacion->save();
        
     }
@@ -109,7 +105,9 @@ class ObservacionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $observacion = Observacion::findOrFail($id);
+        $observacion->descripcion = $request->descripcion;
+        $observacion->update();
     }
 
     /**
