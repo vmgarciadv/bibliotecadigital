@@ -8,19 +8,23 @@ use GuzzleHttp\Client;
 class TesisController extends Controller
 {
     public function index () {
-        $client = new \GuzzleHttp\Client(["base_uri" => "http://dogcare-cliente.herokuapp.com/horario"]);
+        $client = new \GuzzleHttp\Client(["base_uri" => "https://bibliotecadigital.herokuapp.com/api/tesis/"]);
         $options = [
             'json' => [
-                "cuidador" => 2,
-                "fecha_fin" => "2020-03-08",
-                "fecha_ini" => "2020-03-19"
+                "nombre" => "Tesis 1",
+                "autor" => "Jose",
+                "tutor" => "Juan",
+                "year_publicacion" => 2020,
+                "tema_id" => 1
             ]
         ];
    
     // $response = $client->request('POST', 'horario');
 
-    $response = $client->post("/horario", $options);
+    $response = $client->post("/api/tesis/", $options);
 
-    echo $response->getBody();
+    dd($response);
+
+    
     }
 }

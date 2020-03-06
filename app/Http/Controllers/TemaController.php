@@ -8,18 +8,20 @@ use GuzzleHttp\Client;
 class TemaController extends Controller
 {
     public function index () {
-        $client = new \GuzzleHttp\Client(["base_uri" => "http://dogcare-cliente.herokuapp.com/horario"]);
+        $client = new \GuzzleHttp\Client(["base_uri" => "http://bibliotecadigital.herokuapp.com/api/tema/"]);
         $options = [
             'json' => [
-                "cuidador" => 2,
-                "fecha_fin" => "2020-03-08",
-                "fecha_ini" => "2020-03-19"
-            ]
+                "id" => 1,
+                "nombre" => "Web app"
+            ], 
+            
         ];
    
      // $response = $client->request('POST', 'horario');
 
-    $response = $client->post("/horario", $options);
+    $response = $client->post("/api/tema/", $options);
+    
+    //dd($response->getBody()->getContents());
 
     echo $response->getBody();
         }
