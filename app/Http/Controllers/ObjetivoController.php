@@ -11,9 +11,10 @@ class ObjetivoController extends Controller
         $client = new \GuzzleHttp\Client(["base_uri" => "http://bibliotecadigital.herokuapp.com/api/objetivo"]);
         $options = [
             'json' => [
-                "tesis_id" => 1,
                 "nombre" => "desarrollar",
-                "usuario_id" => 1
+                "tesis_id" => 1,
+                "usuario_id" => 1,
+                "objetivo_id" => ""
             ]
         ];
    

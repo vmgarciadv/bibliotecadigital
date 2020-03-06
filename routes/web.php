@@ -16,6 +16,7 @@
 Route::get('/tesis', 'TesisController@index');
 Route::get('/tema', 'TemaController@index');
 Route::get('/objetivo', 'ObjetivoController@index');
+Route::get('/usuario', 'UsuarioController@index');
 
 
 
