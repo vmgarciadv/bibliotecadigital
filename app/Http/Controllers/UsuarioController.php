@@ -3,10 +3,9 @@
 namespace QA\Http\Controllers;
 
 use Illuminate\Http\Request;
-use QA\Tesis;
+use QA\Usuario;
 
-
-class TesisController extends Controller
+class UsuarioController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -36,13 +35,9 @@ class TesisController extends Controller
      */
     public function store(Request $request)
     {
-        $tesis = new Tesis;
-        $tesis->nombre = $request->nombre;
-        $tesis->autor = $request->autor;
-        $tesis->tutor = $request->tutor;
-        $tesis->year_publicacion = $request->year_publicacion;
-        $tesis->tema_id = $request->tema_id;
-        $tesis->save();
+        $usuario = new Usuario;
+        $usuario->nombre = $request->nombre;
+        $usuario->save();
     }
 
     /**
@@ -53,7 +48,7 @@ class TesisController extends Controller
      */
     public function show($id)
     {
-        return Tesis::where('id', $id)->get();
+        return Usuario::where('id', $id)->get();
     }
 
     /**
@@ -76,13 +71,9 @@ class TesisController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $tesis = Tesis::findOrFail($id);
-        $tesis->nombre = $request->nombre;
-        $tesis->autor = $request->autor;
-        $tesis->tutor = $request->tutor;
-        $tesis->year_publicacion = $request->year_publicacion;
-        $tesis->tema_id = $request->tema_id;
-        $tesis->update();
+        $usuario = Usuario::findOrFail($id);
+        $usuario->nombre = $request->nombre;
+        $usuario->update();
     }
 
     /**

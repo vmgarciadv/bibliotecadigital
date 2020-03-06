@@ -19,3 +19,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::apiResources(['tesis' => 'TesisController']);
 Route::apiResources(['tema' => 'TemaController']);
+Route::apiResources(['objetivo' => 'ObjetivoController']);
+Route::apiResources(['observacion' => 'ObservacionController']);
+Route::apiResources(['usuario' => 'UsuarioController']);

@@ -3,10 +3,9 @@
 namespace QA\Http\Controllers;
 
 use Illuminate\Http\Request;
-use QA\Tesis;
+use QA\Objetivo;
 
-
-class TesisController extends Controller
+class ObjetivoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -36,13 +35,13 @@ class TesisController extends Controller
      */
     public function store(Request $request)
     {
-        $tesis = new Tesis;
-        $tesis->nombre = $request->nombre;
-        $tesis->autor = $request->autor;
-        $tesis->tutor = $request->tutor;
-        $tesis->year_publicacion = $request->year_publicacion;
-        $tesis->tema_id = $request->tema_id;
-        $tesis->save();
+        $objetivo = new Objetivo;
+        $objetivo->nombre = $request->nombre;
+        $objetivo->tesis_id = $request->tesis_id;
+        $objetivo->usuario_id = $request->usuario_id;
+        $objetivo->objetivo_id = $request->objetivo_id;
+        $objetivo->obsobj_id = $request->obsobj_id;
+        $objetivo->save();
     }
 
     /**
@@ -53,7 +52,7 @@ class TesisController extends Controller
      */
     public function show($id)
     {
-        return Tesis::where('id', $id)->get();
+        return Objetivo::where('id', $id)->get();
     }
 
     /**
@@ -76,13 +75,13 @@ class TesisController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $tesis = Tesis::findOrFail($id);
-        $tesis->nombre = $request->nombre;
-        $tesis->autor = $request->autor;
-        $tesis->tutor = $request->tutor;
-        $tesis->year_publicacion = $request->year_publicacion;
-        $tesis->tema_id = $request->tema_id;
-        $tesis->update();
+        $objetivo = Objetivo::findOrFail($id);
+        $objetivo->nombre = $request->nombre;
+        $objetivo->tesis_id = $request->tesis_id;
+        $objetivo->usuario_id = $request->usuario_id;
+        $objetivo->objetivo_id = $request->objetivo_id;
+        $objetivo->obsobj_id = $request->obsobj_id;
+        $objetivo->update();
     }
 
     /**

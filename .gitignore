@@ -1,4 +1,5 @@
 *.env
 *.yml
 /vendor/
+/config/database.php
 results/
