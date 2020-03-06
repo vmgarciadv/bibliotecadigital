@@ -24,6 +24,7 @@ class FeatureContext implements Context, SnippetAcceptingContext
     {
     }
 
+
     /**
      * @Given I have the json:
      */
